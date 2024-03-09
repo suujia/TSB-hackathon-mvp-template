@@ -10,13 +10,13 @@ In this workshop, you'll learn how to create an MVP web app using Next.js, Prism
 4. [Create a new React component](https://github.com/suujia/TSB-hackathon-mvp-template/blob/main/README.md#create-a-new-react-component)
 5. [Save and Retrieve the Data](https://github.com/suujia/TSB-hackathon-mvp-template/blob/main/README.md#save-and-retrieve-the-data)
 6. [Add some styling in CSS](https://github.com/suujia/TSB-hackathon-mvp-template/blob/main/README.md#add-some-styling-in-css)
-7. [Deploy on Vercel (Optional)](https://github.com/suujia/TSB-hackathon-mvp-template/blob/main/README.md#deploy-on-vercel)
+7. [Publish app to a real URL (Optional)](https://github.com/suujia/TSB-hackathon-mvp-template/blob/main/README.md#deploy-on-vercel)
 
 ### Setup and Installation (10 mins) <a name="setup-and-installation"></a>
 
 1. Open `Terminal` on Mac or Linux, or `Powershell` on Windows.
 2. [Install Node.js](https://nodejs.org/en/download/) for running JavaScript code
-3. [Install VS Code](https://code.visualstudio.com/download) for editing code
+3. [Install VS Code](https://code.visualstudio.com/download) for writing and editing code
 
 ### Create the Web App (15 mins)
 
@@ -33,7 +33,13 @@ Let's use these simple settings to configure the app!
 ✔ Would you like to customize the default import alias (@/*)?  No
 ```
 
+```
+cd tsb-hackathon-mvp
+```
+
 ### Database Setup (10 mins) <a name="database-setup"></a>
+
+Open the `tsb-hackathon-mvp` folder in VS Code.
 
 1. Add a `Tweet` data model schema at the end of `/prisma/schema.prisma`.
 
@@ -83,6 +89,9 @@ Go to [http://localhost:3000](http://localhost:3000) to see the web app.
 ### Create a new React component (30 mins) <a name="create-a-new-react-component"></a>
 
 1. Create a new folder `src/app/new` and a new file `page.jsx` inside it.
+
+The way NextJS works is if you create a new folder inside the `pages` folder, it will create a new route for you. For example, if you create a new folder called `new` and a new file called `NewTweetPage.jsx` inside it, you can access the new page by going to `http://localhost:3000/new`.
+
 2. Add a new React component to the new file.
 
 ```
@@ -168,26 +177,45 @@ async function createTweet(data) {
   display: flex;
   flex-direction: column;
   align-items: center;
-  gap: 10px;
+  gap: 16px;
+}
+
+.button {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 8px 16px;
+  width: auto;
+  color: #fff;
+  border: none;
+  border-radius: 8px;
+  background-color: #1da1f2;
+  cursor: pointer;
+  transition: background-color 0.3s;
 }
 
 .tweet {
   display: flex;
-  align-items: center;
+  flex-direction: column;
+  align-items: flex-start;
   justify-content: center;
-  margin: 10px;
-  height: 100px;
-  width: 300px;
+  margin: 16px;
 }
 ```
 
-Here are sample styles you can add to the `.tweet` class, but feel free to customize it to your liking!
+Here are some additional styles you can add to the `.tweet` class, feel free to customize it to your liking! Choose your own colors, fonts, and sizes.
 
 ```
-color: blue;
-border-radius: 20px;
-border: 2px solid #000000;
-background-color: #f0f0f0;
+padding: 16px;
+width: 300px;
+color: #333;
+box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+border-radius: 8px;
+background-color: #fff;
+border: 1px solid #e1e8ed;
+font-size: 16px;
+font-weight: 400;
+font-family: "Arial", sans-serif;
 ```
 
 ## Publish app to a real URL (Optional) <a name="deploy-on-vercel"></a>

@@ -21,7 +21,9 @@ export default function NewTweetPage() {
   return (
     <div className="container">
       <h1>New Tweet</h1>
-      <Link href="/">Back</Link>
+      <Link href="/" className="button">
+        Back
+      </Link>
       <form action={createTweet}>
         <input type="text" name="content" />
         <button type="submit">Tweet</button>

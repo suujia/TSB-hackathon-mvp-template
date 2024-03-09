@@ -7,7 +7,9 @@ export default async function Page() {
   return (
     <div className="container">
       <h1>Mini Twitter</h1>
-      <Link href="/new">New Tweet</Link>
+      <Link href="/new" className="button">
+        New Tweet
+      </Link>
       <ul>
         {tweets.map((tweet) => (
           <div className="tweet" key={tweet.id}>
