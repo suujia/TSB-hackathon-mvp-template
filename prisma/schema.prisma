@@ -10,10 +10,8 @@ datasource db {
   url      = env("DATABASE_URL")
 }
 
-model Todo {
-  id         String   @id @default(uuid())
-  title      String
-  completed  Boolean  @default(false)
-  created_at DateTime @default(now())
-  updated_at DateTime @updatedAt
+model Tweet {
+  id        Int      @id @default(autoincrement())
+  content   String
+  timestamp DateTime @default(now())
 }
