@@ -39,6 +39,14 @@ cd tsb-hackathon-mvp
 
 ## Database Setup (10 mins) <a name="database-setup"></a>
 
+0. Install Prisma to help manage database schema and migrations.
+
+```
+npm i prisma --save-dev
+npx prisma init --datasource-provider sqlite
+npm i --save-dev @types/node
+```
+
 Open the `tsb-hackathon-mvp` folder in VS Code.
 
 1. Add a `Tweet` data model schema at the end of `/prisma/schema.prisma`.
@@ -56,6 +64,8 @@ model Tweet {
 ```
 npx prisma migrate dev --name init
 ```
+
+Everytime you update and change the database schema, you need to run the migration command to update the database, however run it with a new name each time and use a name that indicates what changes you made.
 
 3. Create a `src/db.ts` file to set up the database connection. This file will be used to create a new Prisma client instance and export it as a default module. Prisma is a database toolkit that makes it easy to work with databases in a type-safe way.
 
@@ -98,7 +108,9 @@ The way NextJS works is if you create a new folder inside the `pages` folder, it
 import Link from "next/link";
 import prisma from "../../db";
 
-async function createTweet(data) {}
+async function createTweet(data) {
+  "use server";
+}
 
 export default function NewTweetPage() {
   return (
@@ -114,7 +126,7 @@ export default function NewTweetPage() {
 }
 ```
 
-3. Add a link to the new page in the `src/app/page.js` file.
+3. Add a link to the new page in the `src/app/page.js` file. Feel free to replace the entire file with this code.
 
 ```
 import Link from "next/link";
@@ -129,6 +141,8 @@ export default async function Page() {
   );
 }
 ```
+
+4. Delete Unnecessary Files. Delete `page.module.css`. Open `global.css` and delete everything inside it. (Keep the file, we will add some custom styles later.)
 
 ## Save and Retrieve the Data (15 mins) <a name="save-and-retrieve-the-data"></a>
 
