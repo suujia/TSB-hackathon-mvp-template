@@ -2,7 +2,7 @@
 
 In this workshop, you'll learn how to create an MVP web app using Next.js, Prisma, and React. We'll cover setting up your environment, creating a web app, setting up a database, creating a new React component, saving and retrieving data, and adding some basic styling.
 
-### Table of Contents
+## Table of Contents
 
 1. [Setup and Installation](https://github.com/suujia/TSB-hackathon-mvp-template/blob/main/README.md#setup-and-installation)
 2. [Create the Web App](https://github.com/suujia/TSB-hackathon-mvp-template/blob/main/README.md#create-the-web-app)
@@ -12,13 +12,13 @@ In this workshop, you'll learn how to create an MVP web app using Next.js, Prism
 6. [Add some styling in CSS](https://github.com/suujia/TSB-hackathon-mvp-template/blob/main/README.md#add-some-styling-in-css)
 7. [Publish app to a real URL (Optional)](https://github.com/suujia/TSB-hackathon-mvp-template/blob/main/README.md#deploy-on-vercel)
 
-### Setup and Installation (10 mins) <a name="setup-and-installation"></a>
+## Setup and Installation (10 mins) <a name="setup-and-installation"></a>
 
 1. Open `Terminal` on Mac or Linux, or `Powershell` on Windows.
 2. [Install Node.js](https://nodejs.org/en/download/) for running JavaScript code
 3. [Install VS Code](https://code.visualstudio.com/download) for writing and editing code
 
-### Create the Web App (15 mins)
+## Create the Web App (15 mins)
 
 1. Create a new [Next.js](https://next.js/) app: `npx create-next-app@latest tsb-hackathon-mvp`
 
@@ -37,7 +37,7 @@ Let's use these simple settings to configure the app!
 cd tsb-hackathon-mvp
 ```
 
-### Database Setup (10 mins) <a name="database-setup"></a>
+## Database Setup (10 mins) <a name="database-setup"></a>
 
 Open the `tsb-hackathon-mvp` folder in VS Code.
 
@@ -86,11 +86,11 @@ npm run dev
 
 Go to [http://localhost:3000](http://localhost:3000) to see the web app.
 
-### Create a new React component (30 mins) <a name="create-a-new-react-component"></a>
+## Create a new React component (20 mins) <a name="create-a-new-react-component"></a>
 
 1. Create a new folder `src/app/new` and a new file `page.jsx` inside it.
 
-The way NextJS works is if you create a new folder inside the `pages` folder, it will create a new route for you. For example, if you create a new folder called `new` and a new file called `NewTweetPage.jsx` inside it, you can access the new page by going to `http://localhost:3000/new`.
+The way NextJS works is if you create a new folder inside the `pages` folder, it will create a new route for you. For example, if you create a new folder called `new` and a new file called `page.jsx` inside it, you can access the new page by going to `http://localhost:3000/new`.
 
 2. Add a new React component to the new file.
 
@@ -117,10 +117,20 @@ export default function NewTweetPage() {
 3. Add a link to the new page in the `src/app/page.js` file.
 
 ```
-<Link href="/new">New Tweet</Link>
+import Link from "next/link";
+
+export default async function Page() {
+
+  return (
+    <div className="container">
+      <h1>Mini Twitter</h1>
+      <Link href="/new">New Tweet</Link>
+    </div>
+  );
+}
 ```
 
-### Save and Retrieve the Data (20 mins) <a name="save-and-retrieve-the-data"></a>
+## Save and Retrieve the Data (15 mins) <a name="save-and-retrieve-the-data"></a>
 
 1. In the `/src/app/page.js` file, import Prisma: `import prisma from "../db";`
 2. Use the Prisma client, `prisma.tweet.findMany()`, to get the tweets from the database.
@@ -148,7 +158,7 @@ export default async function Page() {
 }
 ```
 
-3. In the `/src/app/new/page.jsx` file, import Prisma: `import prisma from "../../db";`
+3. In the `/src/app/new/page.jsx` file, import Prisma: `import prisma from "../../db";` and `import { redirect } from "next/navigation";`
 4. Update the createTweet function to create a new tweet.
 
 ```
@@ -168,7 +178,7 @@ async function createTweet(data) {
 }
 ```
 
-### Add some styling in CSS (10 mins) <a name="add-some-styling-in-css"></a>
+## Add some styling in CSS (10 mins) <a name="add-some-styling-in-css"></a>
 
 1. Delete everything in `globals.css` and add these custom styles to get started. Edit the styling to your liking! If you want to add styling around any component, all you need to do is add `className="your-variable-name"` to the `div`, then come here and add `.your-variable-name {}` to the CSS file.
 
